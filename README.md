@@ -1,7 +1,7 @@
-# FlowBindings
-Bindings to Android UI elements using Kotlin Flows.  The listeners automatically remove when the coroutine scope expires.  This is inspired by [`RxBinding`](https://github.com/JakeWharton/RxBinding).
+# SimpleViewHolders
+Android library containing a concrete ViewHolder that doesn't require extending it to use.   It also contains a simple view holder that sets up the View Holder root view for clicks.
 
-[![](https://jitpack.io/v/fsk-software/FlowBindings.svg)](https://jitpack.io/#fsk-software/FlowBindings)
+[![](https://jitpack.io/v/fsk-software/SimpleViewHolders.svg)](https://jitpack.io/#fsk-software/SimpleViewHolders)
 
 To use the library add jitpack to the projects repositories: 
  
@@ -14,16 +14,29 @@ To use the library add jitpack to the projects repositories:
 Then add the following the library to your modules gradle file
    ```
    dependencies {
-         implementation 'com.github.fsk-software:FlowBindings:1.0-alpha1'
+         implementation 'com.github.fsk-software:SimpleViewHolders:Tag'
    }
    ```  
 
-To use the bindings, just call the binding extensions.
+To use the SimpleViewHolder, just inflate your view directly into it:
     
-    button.clicks().onEach {
-       //respond to each click
-    }.flowOn(Dispatchers.Main)
-     .launchIn(lifecycleScope)
+    
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        LayoutInflater.from(parent.context).let {
+            SimpleViewHolder(it.inflate(R.layout.item_missing_items_header, parent, false))
+        }
+
+
+To use the OnItemClickViewHolder, just inflate your view directly into it and provide the on item click lambda:
+    
+    
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        LayoutInflater.from(parent.context).let {
+            OnItemClickViewHolder(it.inflate(R.layout.item_missing_items_header, parent, false))
+            { position ->
+               //handle click from the position
+            }
+        }
 
 
 
