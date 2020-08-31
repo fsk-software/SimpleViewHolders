@@ -14,7 +14,7 @@ To use the library add jitpack to the projects repositories:
 Then add the following the library to your modules gradle file
    ```
    dependencies {
-         implementation 'com.github.fsk-software:SimpleViewHolders:Tag'
+         implementation 'com.github.fsk-software:SimpleViewHolders:1.0-alpha1'
    }
    ```  
 
