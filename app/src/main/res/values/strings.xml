@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">SimpleViewHolder</string>
+
+    <string name="missing_items">Missing Items</string>
+    <string name="found_items">Found Items</string>
+</resources>

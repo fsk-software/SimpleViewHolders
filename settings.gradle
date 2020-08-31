@@ -1,0 +1,3 @@
+include ':simpleviewholders'
+include ':app'
+rootProject.name = "SimpleViewHolder"
